@@ -53,5 +53,22 @@ shadcn:
 @import '@govnex/ui/styles.css';
 ```
 
+### `@source` obrigatorio (Tailwind v4)
+
+A deteccao automatica de conteudo do Tailwind v4 ignora o que estiver no
+`.gitignore` do consumidor — e `node_modules` normalmente esta la. Sem o
+`@source` abaixo, as classes usadas dentro de `dist/index.js` (ex.:
+`tracking-widest`, `group/button`) nunca sao geradas, e a interface fica
+sem estilo nenhum: bordas, cores e radius somem, sobra so texto puro.
+
+```css
+@source '../../node_modules/@govnex/ui/dist';
+```
+
+(ajuste o caminho relativo conforme a posicao do `app.css` no projeto).
+Isso so se aplica a quem instala via `node_modules` — o GOVNEX GAB, que
+consome `packages/govnex-ui/src` direto do proprio repositorio (nao
+ignorado pelo git), nao precisa disso.
+
 Enquanto o pacote estiver em `0.x`, novas extracoes devem ser validadas no
 GOVNEX GAB e em pelo menos outro produto GOVNEX antes de estabilizar a API.
