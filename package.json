@@ -6,6 +6,10 @@
     "sideEffects": [
         "./src/styles.css"
     ],
+    "files": [
+        "dist",
+        "src/styles.css"
+    ],
     "exports": {
         ".": {
             "types": "./dist/index.d.ts",
