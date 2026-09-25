@@ -24,6 +24,7 @@
     "scripts": {
         "types:check": "tsc --noEmit -p tsconfig.json",
         "build": "tsup",
+        "contrast:check": "node scripts/check-contrast.mjs",
         "prepare": "npm run build"
     },
     "dependencies": {

@@ -14,10 +14,48 @@ ficar nos aplicativos ou em adaptadores separados.
   indicadores e acoes de tabela.
 - `icons`: ponte oficial para Solar Icons; consumidores nao devem importar a
   biblioteca de icones diretamente.
-- `styles.css`: tokens claro/escuro, tipografia e escala de raios GOVNEX.
+- `styles.css`: tokens claro/escuro, tipografia, escala de raios
+  (`--radius` 0,625rem: sm 6px, md 8px, lg 10px, xl 14px, 2xl 16px),
+  sombras (`--shadow-xs/sm/md/lg`; no escuro, borda e brilho) e tokens
+  semanticos `--success/--warning/--info/--destructive`, cada um com
+  `-foreground` e `-soft`. `--chart-1` segue o destaque (`--primary`);
+  `--chart-2..5` sao matizes categoricos fixos, distintos das cores de estado.
+
+### Contraste
+
+`npm run contrast:check` calcula o contraste WCAG dos pares de tokens nos
+dois temas (texto sobre superficies, semanticos solidos e suaves, item ativo
+da sidebar com cores de gabinete de exemplo) e falha abaixo de 4,5:1. Rode
+depois de qualquer mudanca de cor em `styles.css`.
+
+### Padroes de pagina
+
+- `PageHeader`: trilha opcional (`breadcrumb`), titulo `text-2xl`, descricao
+  abaixo, acoes a direita.
+- `SectionCard` / `Surface` + `SurfaceHeader`: cartao de secao com titulo
+  `text-base`; `interactive` eleva o cartao no hover.
+- `StatCard`: rotulo, valor, `trend` (variacao % vs periodo anterior, cor
+  semantica; `positiveIsGood={false}` inverte) e `sparkline` (serie curta);
+  `StatCardSkeleton` para carregamento.
+- `EmptyState` (`size="compact"` dentro de cartoes) e `Sparkline`.
 
 Componentes de produto, chamadas HTTP, rotas, permissoes e estado do Inertia
 nao pertencem a este pacote.
+
+## Fonte unica (onde editar)
+
+Este repositorio e a **fonte canonica** do `@govnex/ui`. Toda mudanca de
+token, componente ou padrao e feita **somente aqui**.
+
+- **GOVNEX GAB** consome uma copia espelhada em `packages/govnex-ui`
+  (`"@govnex/ui": "file:packages/govnex-ui"`, resolvida direto de `src/`).
+  Essa copia e gerada por `npm run sync:ui` (script
+  `scripts/sync-govnex-ui.mjs` do GAB, que le `../govnex-ui`) e **nao deve
+  ser editada a mao** — a proxima sincronizacao sobrescreve. Depois de
+  alterar este repositorio, rode `npm run sync:ui` no GAB (`--check` apenas
+  compara e falha se o espelho estiver defasado).
+- **Hub e API** instalam via dependencia Git (abaixo) e so recebem mudancas
+  quando atualizam a referencia no lockfile (`npm update @govnex/ui`).
 
 ## Instalacao
 
@@ -72,3 +110,8 @@ ignorado pelo git), nao precisa disso.
 
 Enquanto o pacote estiver em `0.x`, novas extracoes devem ser validadas no
 GOVNEX GAB e em pelo menos outro produto GOVNEX antes de estabilizar a API.
+
+## Estado do redesenho visual
+
+O redesenho "SaaS moderno e suave" (tokens, componentes e padrões deste pacote) está **em andamento**; o que já foi feito e o que falta
+estão em `docs/REDESENHO_UI.md` do repositório `govnex-gab`. Antes de adotar esta versão em outro produto, leia a seção "O que falta para concluir".
