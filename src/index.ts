@@ -262,6 +262,11 @@ export { AttachmentField } from './patterns/attachment-field';
 export type { AttachmentCurrentFile } from './patterns/attachment-field';
 export { AuthSplitLayout } from './patterns/auth-split-layout';
 export type { AuthSplitLayoutProps } from './patterns/auth-split-layout';
+export { AuthField, AuthRememberToggle } from './patterns/auth-fields';
+export type {
+    AuthFieldProps,
+    AuthRememberToggleProps,
+} from './patterns/auth-fields';
 export { ColorPicker } from './patterns/color-picker';
 export { DatePicker } from './patterns/date-picker';
 export { DateTimeFieldPair } from './patterns/date-time-field-pair';
