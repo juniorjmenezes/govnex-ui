@@ -250,6 +250,7 @@ export {
 } from './lib/masks';
 export type { MaskType } from './lib/masks';
 export { cn } from './lib/utils';
+export { CardCarousel } from './patterns/card-carousel';
 export { EmptyState } from './patterns/empty-state';
 export type { EmptyStateProps } from './patterns/empty-state';
 export { DestructiveAlertDialog } from './patterns/destructive-alert-dialog';
