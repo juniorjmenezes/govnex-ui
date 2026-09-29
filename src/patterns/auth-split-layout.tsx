@@ -51,7 +51,7 @@ export function AuthSplitLayout({
                         {title}
                     </h1>
                     {description && (
-                        <p className="mt-2 text-sm text-muted-foreground">
+                        <p className="text-sm text-muted-foreground">
                             {description}
                         </p>
                     )}
