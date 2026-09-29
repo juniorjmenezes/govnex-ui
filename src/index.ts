@@ -260,6 +260,8 @@ export type {
 } from './patterns/destructive-alert-dialog';
 export { AttachmentField } from './patterns/attachment-field';
 export type { AttachmentCurrentFile } from './patterns/attachment-field';
+export { AuthSplitLayout } from './patterns/auth-split-layout';
+export type { AuthSplitLayoutProps } from './patterns/auth-split-layout';
 export { ColorPicker } from './patterns/color-picker';
 export { DatePicker } from './patterns/date-picker';
 export { DateTimeFieldPair } from './patterns/date-time-field-pair';
