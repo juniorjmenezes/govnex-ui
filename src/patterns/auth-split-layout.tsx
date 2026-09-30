@@ -50,9 +50,7 @@ export function AuthSplitLayout({
         >
             <div className="flex flex-1 flex-col px-6 py-10 sm:px-10 lg:px-16">
                 {headerAction && (
-                    <div className="flex justify-end text-sm">
-                        {headerAction}
-                    </div>
+                    <div className="text-right text-sm">{headerAction}</div>
                 )}
                 <div className="mx-auto flex w-full max-w-sm flex-1 flex-col justify-center">
                     <h1 className="text-2xl font-semibold tracking-tight text-foreground">
