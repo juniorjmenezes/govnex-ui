@@ -1,6 +1,6 @@
 @import '@fontsource-variable/inter-tight';
 @import '@fontsource-variable/fira-code';
-@import '@fontsource/dm-serif-display';
+@import '@fontsource-variable/funnel-display';
 
 @source './components';
 @source './patterns';
@@ -142,7 +142,7 @@
 
 @theme inline {
     --font-sans: 'Inter Tight Variable', ui-sans-serif, system-ui, sans-serif;
-    --font-heading: 'DM Serif Display', ui-serif, Georgia, serif;
+    --font-heading: 'Funnel Display Variable', ui-sans-serif, system-ui, sans-serif;
     --font-mono: 'Fira Code Variable', ui-monospace, monospace;
     --text-badge: 0.687rem;
     --color-sidebar-ring: var(--sidebar-ring);
