@@ -38,29 +38,16 @@ export function AuthField({
     const isPassword = type === 'password';
 
     return (
-        <div className="space-y-1 pt-4">
-            <div className="relative">
+        <div className="space-y-1">
+            <Label htmlFor={id}>{label}</Label>
+            <div className={isPassword ? 'relative' : undefined}>
                 <Input
                     id={id}
                     type={isPassword && showPassword ? 'text' : type}
                     aria-invalid={Boolean(error)}
-                    placeholder=" "
-                    className={cn(
-                        'peer placeholder:text-transparent',
-                        isPassword && 'pr-10',
-                        className,
-                    )}
+                    className={cn(isPassword && 'pr-10', className)}
                     {...inputProps}
                 />
-                <Label
-                    htmlFor={id}
-                    className={cn(
-                        'pointer-events-none absolute top-0 left-3 origin-left -translate-y-1/2 scale-90 text-foreground transition-all',
-                        'peer-[&:placeholder-shown:not(:focus)]:top-1/2 peer-[&:placeholder-shown:not(:focus)]:scale-100 peer-[&:placeholder-shown:not(:focus)]:text-muted-foreground',
-                    )}
-                >
-                    {label}
-                </Label>
                 {isPassword && (
                     <Button
                         type="button"
