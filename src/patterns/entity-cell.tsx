@@ -17,8 +17,12 @@ export function EntityCellTitle({
     ...props
 }: ComponentProps<'div'>) {
     return (
+        // `data-slot` termina em "-name", não "-title": a regra global em
+        // styles.css (`[data-slot$='-title'] { @apply font-heading; }`,
+        // pensada para títulos de página/card como SurfaceTitle) aplicaria
+        // a fonte serifada aqui, o que não cabe numa célula de tabela.
         <div
-            data-slot="entity-cell-title"
+            data-slot="entity-cell-name"
             className={cn(
                 'flex min-w-0 flex-wrap items-center gap-2 font-normal [&_a:hover]:underline [&_button:hover]:underline',
                 className,
