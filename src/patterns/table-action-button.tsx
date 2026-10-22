@@ -6,7 +6,7 @@ import { cn } from '../lib/utils';
 
 export const tableButtonDestructiveHoverClass =
     'border-border bg-transparent text-foreground hover:border-destructive/40 hover:bg-destructive/15 hover:text-destructive dark:bg-transparent dark:hover:bg-destructive/25';
-export const tableButtonOutlineHoverClass = 'bg-transparent';
+export const tableButtonOutlineHoverClass = 'border-border bg-transparent';
 
 export type TableActionButtonProps = Omit<
     ComponentProps<typeof Button>,
