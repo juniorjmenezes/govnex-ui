@@ -50,15 +50,9 @@ nao pertencem a este pacote.
 Este repositorio e a **fonte canonica** do `@govnex/ui`. Toda mudanca de
 token, componente ou padrao e feita **somente aqui**.
 
-- **GOVNEX GAB** consome uma copia espelhada em `packages/govnex-ui`
-  (`"@govnex/ui": "file:packages/govnex-ui"`, resolvida direto de `src/`).
-  Essa copia e gerada por `npm run sync:ui` (script
-  `scripts/sync-govnex-ui.mjs` do GAB, que le `../govnex-ui`) e **nao deve
-  ser editada a mao** — a proxima sincronizacao sobrescreve. Depois de
-  alterar este repositorio, rode `npm run sync:ui` no GAB (`--check` apenas
-  compara e falha se o espelho estiver defasado).
-- **Hub e API** instalam via dependencia Git (abaixo) e so recebem mudancas
-  quando atualizam a referencia no lockfile (`npm update @govnex/ui`).
+- **GAB, API, GHO e HUB** instalam todos via dependencia Git (abaixo) e so
+  recebem mudancas quando atualizam a referencia no lockfile
+  (`npm install @govnex/ui@github:juniorjmenezes/govnex-ui`).
 
 ## Tipografia
 
@@ -112,10 +106,9 @@ sem estilo nenhum: bordas, cores e radius somem, sobra so texto puro.
 @source '../../node_modules/@govnex/ui/dist';
 ```
 
-(ajuste o caminho relativo conforme a posicao do `app.css` no projeto).
-Isso so se aplica a quem instala via `node_modules` — o GOVNEX GAB, que
-consome `packages/govnex-ui/src` direto do proprio repositorio (nao
-ignorado pelo git), nao precisa disso.
+(ajuste o caminho relativo conforme a posicao do `app.css` no projeto). Vale
+para os quatro consumidores (GAB, API, GHO, HUB) — todos instalam via
+`node_modules`.
 
 Enquanto o pacote estiver em `0.x`, novas extracoes devem ser validadas no
 GOVNEX GAB e em pelo menos outro produto GOVNEX antes de estabilizar a API.

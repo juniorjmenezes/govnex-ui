@@ -318,6 +318,7 @@ export type {
 } from './patterns/stat-card';
 export { SectionCard } from './patterns/section-card';
 export type { SectionCardProps } from './patterns/section-card';
+export { EntityCellTitle, EntityCellSubtitle } from './patterns/entity-cell';
 export {
     TableActionButton,
     tableButtonDestructiveHoverClass,
