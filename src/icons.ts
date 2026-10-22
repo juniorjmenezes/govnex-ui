@@ -1473,6 +1473,12 @@ export {
     HeartIcon as HeartBoldIcon,
     StarIcon as StarBoldIcon,
     PlayIcon as PlayBoldIcon,
+    // Ícones de status dos toasts (Toaster, ver sonner.tsx em cada app):
+    // bold, não outline, para ficar mais legível em tamanho pequeno.
+    CheckCircleIcon as CheckCircleBoldIcon,
+    InfoCircleIcon as InfoCircleBoldIcon,
+    DangerTriangleIcon as DangerTriangleBoldIcon,
+    ForbiddenIcon as ForbiddenBoldIcon,
 } from '@solar-icons/react/bold';
 
 export {
