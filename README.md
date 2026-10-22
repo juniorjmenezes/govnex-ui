@@ -63,8 +63,8 @@ token, componente ou padrao e feita **somente aqui**.
 ## Tipografia
 
 Outfit e a fonte de interface (`--font-sans`, inclusive os valores do
-`StatCard`), DM Serif Text compoe os titulos (`--font-heading`) e Fira Code
-fica reservada para codigo (`--font-mono`).
+`StatCard`), DM Serif Text compoe os titulos (`--font-heading`) e JetBrains
+Mono fica reservada para codigo (`--font-mono`).
 
 ## Instalacao
 
