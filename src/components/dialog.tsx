@@ -46,6 +46,7 @@ function DialogOverlay({
 function DialogContent({
     className,
     children,
+    onPointerDownOutside,
     ...props
 }: React.ComponentProps<typeof DialogPrimitive.Content>) {
     return (
@@ -58,6 +59,19 @@ function DialogContent({
                         'pointer-events-auto grid w-full max-w-[calc(100%-2rem)] gap-6 overflow-hidden rounded-xl bg-popover p-6 text-sm text-popover-foreground shadow-lg ring-1 ring-foreground/8 duration-100 outline-none sm:max-w-md dark:ring-foreground/10 data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95',
                         className,
                     )}
+                    onPointerDownOutside={(event) => {
+                        // AppSelect/Combobox (Base UI) abre o popup num portal próprio,
+                        // fora da árvore do Dialog (Radix) — sem essa checagem, o Radix
+                        // trata o clique no popup como "fora" e fecha o diálogo já no
+                        // pointerdown, antes do clique terminar no item. Resultado: só a
+                        // seleção por teclado funcionava dentro de um Dialog. Ver exceção
+                        // documentada em AGENTS.md sobre combobox/app-select sobre Base UI.
+                        if ((event.detail.originalEvent.target as HTMLElement | null)?.closest('[data-slot="combobox-content"]')) {
+                            event.preventDefault();
+                            return;
+                        }
+                        onPointerDownOutside?.(event);
+                    }}
                     {...props}
                 >
                     {children}
