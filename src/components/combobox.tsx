@@ -123,7 +123,12 @@ function ComboboxContent({
                 align={align}
                 alignOffset={alignOffset}
                 anchor={anchor}
-                className="isolate z-50"
+                // O Dialog/Sheet (Radix) desabilita ponteiro no <body> inteiro
+                // enquanto está aberto (contando com cada Content próprio
+                // reativar via pointer-events-auto); como esse Positioner é
+                // portado para fora da árvore do Dialog, ele herdava esse
+                // "none" do body e ficava inclicável por baixo do modal.
+                className="isolate z-50 pointer-events-auto"
             >
                 <ComboboxPrimitive.Popup
                     data-slot="combobox-content"
