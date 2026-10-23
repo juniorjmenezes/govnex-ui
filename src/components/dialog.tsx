@@ -96,7 +96,7 @@ function DialogHeader({
             )}
             {...props}
         >
-            <div className="flex flex-col">{children}</div>
+            <div className="min-w-0 flex-1 flex flex-col">{children}</div>
             {showCloseButton && (
                 <DialogPrimitive.Close data-slot="dialog-close" asChild>
                     <Button variant="ghost" size="icon-sm" className="shrink-0">
