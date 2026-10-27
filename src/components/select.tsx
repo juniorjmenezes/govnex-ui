@@ -1,7 +1,7 @@
 import { Select as SelectPrimitive } from 'radix-ui';
 import * as React from 'react';
 
-import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from '../icons';
+import { CheckOutlineIcon, ChevronDownIcon, ChevronUpIcon } from '../icons';
 import { cn } from '../lib/utils';
 
 function Select({
@@ -125,7 +125,7 @@ function SelectItem({
         >
             <span className="pointer-events-none absolute right-2 flex size-4 items-center justify-center">
                 <SelectPrimitive.ItemIndicator>
-                    <CheckIcon className="pointer-events-none" />
+                    <CheckOutlineIcon className="pointer-events-none" />
                 </SelectPrimitive.ItemIndicator>
             </span>
             <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
