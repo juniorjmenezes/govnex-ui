@@ -189,7 +189,7 @@ function ChartTooltipContent({
     return (
         <div
             className={cn(
-                'grid min-w-32 items-start gap-1.5 rounded-lg bg-popover px-3.5 py-2.5 text-xs text-popover-foreground shadow-sm ring-1 ring-foreground/10',
+                'grid min-w-32 items-start gap-1.5 bg-popover px-2.5 py-1.5 text-xs text-popover-foreground shadow-sm ring-1 ring-foreground/10',
                 className,
             )}
         >
@@ -233,15 +233,15 @@ function ChartTooltipContent({
                                             !hideIndicator && (
                                                 <div
                                                     className={cn(
-                                                        'shrink-0 border-(--color-border) bg-(--color-bg)',
+                                                        'shrink-0 rounded-[2px] border-(--color-border) bg-(--color-bg)',
                                                         {
-                                                            'h-2.5 w-2.5 rounded-full':
+                                                            'h-2.5 w-2.5':
                                                                 indicator ===
                                                                 'dot',
-                                                            'w-1 rounded-[2px]':
+                                                            'w-1':
                                                                 indicator ===
                                                                 'line',
-                                                            'w-0 rounded-[2px] border-[1.5px] border-dashed bg-transparent':
+                                                            'w-0 border-[1.5px] border-dashed bg-transparent':
                                                                 indicator ===
                                                                 'dashed',
                                                             'my-0.5':
@@ -271,18 +271,7 @@ function ChartTooltipContent({
                                         >
                                             <div className="grid gap-1.5">
                                                 {nestLabel ? tooltipLabel : null}
-                                                <span
-                                                    className={
-                                                        hideIndicator
-                                                            ? 'font-medium'
-                                                            : 'text-muted-foreground'
-                                                    }
-                                                    style={
-                                                        hideIndicator
-                                                            ? { color: indicatorColor }
-                                                            : undefined
-                                                    }
-                                                >
+                                                <span className="text-muted-foreground">
                                                     {itemConfig?.label ??
                                                         item.name}
                                                 </span>
