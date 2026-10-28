@@ -190,6 +190,7 @@ export {
 export { Separator } from './components/separator';
 export {
     Sidebar,
+    SidebarBrand,
     SidebarContent,
     SidebarFooter,
     SidebarGroup,

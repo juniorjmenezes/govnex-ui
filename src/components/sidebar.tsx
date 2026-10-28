@@ -351,6 +351,38 @@ function SidebarHeader({ className, ...props }: React.ComponentProps<'div'>) {
     );
 }
 
+function SidebarBrand({
+    icon,
+    name,
+    className,
+    ...props
+}: Omit<React.ComponentProps<'div'>, 'children'> & {
+    icon: React.ReactNode;
+    name: string;
+}) {
+    return (
+        <div
+            data-slot="sidebar-brand"
+            data-sidebar="brand"
+            className={cn(
+                'flex min-w-0 items-center gap-2.5 px-2 group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:px-0',
+                className,
+            )}
+            {...props}
+        >
+            <span className="flex size-8 shrink-0 items-center justify-center text-sidebar-primary">
+                {icon}
+            </span>
+            <span
+                className="truncate text-sm font-semibold text-sidebar-foreground/70 uppercase group-data-[collapsible=icon]:hidden"
+                title={name}
+            >
+                {name}
+            </span>
+        </div>
+    );
+}
+
 function SidebarFooter({ className, ...props }: React.ComponentProps<'div'>) {
     return (
         <div
@@ -698,6 +730,7 @@ function SidebarMenuSubButton({
 
 export {
     Sidebar,
+    SidebarBrand,
     SidebarContent,
     SidebarFooter,
     SidebarGroup,
