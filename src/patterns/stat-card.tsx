@@ -214,11 +214,11 @@ export function StatCard({
                 )}
             </CardContent>
             {(trend || progress || description) && (
-                <div className="flex flex-col gap-2 border-t border-border px-4 pt-2 pb-4">
+                <div className="space-y-1 border-t px-4 py-2 text-xs text-muted-foreground">
                     {trend && <TrendBadge trend={trend} />}
                     {progress ? (
                         <div>
-                            <div className="flex items-center justify-between gap-2 text-xs text-muted-foreground">
+                            <div className="flex items-center justify-between gap-2">
                                 <span>{progress.label}</span>
                                 <span className="font-medium text-foreground tabular-nums">
                                     {progress.value}
@@ -233,9 +233,7 @@ export function StatCard({
                             />
                         </div>
                     ) : description ? (
-                        <p className="text-xs leading-snug text-muted-foreground">
-                            {description}
-                        </p>
+                        <p className="leading-snug">{description}</p>
                     ) : null}
                 </div>
             )}
@@ -257,7 +255,7 @@ export function StatCardSkeleton({ className }: { className?: string }) {
                 </div>
                 <Skeleton className="h-7 w-20" />
             </CardContent>
-            <div className="border-t border-border px-4 pt-2 pb-4">
+            <div className="space-y-1 border-t px-4 py-2">
                 <Skeleton className="h-3 w-36" />
             </div>
         </Card>
