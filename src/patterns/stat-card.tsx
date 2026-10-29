@@ -132,32 +132,32 @@ export function StatCard({
 
     return (
         <Card className={cn('min-w-0 gap-0 py-0', className)}>
-            <CardContent className="flex h-full flex-col gap-3 p-5">
-                <div className="flex items-start justify-between gap-3">
+            <CardContent className="flex h-full flex-col gap-2 p-4">
+                <div className="flex items-center justify-between gap-3">
                     <p
                         data-slot="stat-card-title"
-                        className="min-w-0 truncate pt-1 font-sans text-sm font-medium text-muted-foreground"
+                        className="min-w-0 truncate font-sans text-sm font-medium text-muted-foreground"
                         title={title}
                     >
                         {title}
                     </p>
                     {Icon && (
                         <span
-                            className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary dark:bg-primary/15 dark:text-[color-mix(in_oklch,var(--primary),white_35%)]"
+                            className="flex size-7 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary dark:bg-primary/15 dark:text-[color-mix(in_oklch,var(--primary),white_35%)]"
                             aria-hidden="true"
                         >
-                            <Icon className="size-5" />
+                            <Icon className="size-4" />
                         </span>
                     )}
                 </div>
                 {/* Valor e mini-gráfico na mesma linha; a variação vem logo
                     abaixo em largura cheia, para não quebrar em cartões
                     estreitos (5 por linha). */}
-                <div className="flex flex-col gap-1.5">
+                <div className="flex flex-col gap-1">
                     <div className="flex items-end justify-between gap-3">
                         <p
                             className={cn(
-                                'min-w-0 text-3xl font-bold tracking-tight text-foreground tabular-nums',
+                                'min-w-0 text-2xl font-bold tracking-tight text-foreground tabular-nums',
                                 valueClassName,
                             )}
                         >
@@ -167,7 +167,7 @@ export function StatCard({
                             <Sparkline
                                 data={sparkline}
                                 color={sparklineColor}
-                                height={36}
+                                height={32}
                                 className="mb-0.5 w-20 max-w-[50%] shrink"
                             />
                         )}
@@ -175,7 +175,7 @@ export function StatCard({
                     {trend && <TrendBadge trend={trend} />}
                 </div>
                 {progress ? (
-                    <div className="mt-auto">
+                    <div>
                         <div className="flex items-center justify-between gap-2 text-xs text-muted-foreground">
                             <span>{progress.label}</span>
                             <span className="font-medium text-foreground tabular-nums">
@@ -188,7 +188,7 @@ export function StatCard({
                         />
                     </div>
                 ) : description ? (
-                    <p className="mt-auto text-xs leading-relaxed text-muted-foreground">
+                    <p className="text-xs leading-snug text-muted-foreground">
                         {description}
                     </p>
                 ) : null}
@@ -204,12 +204,12 @@ export function StatCardSkeleton({ className }: { className?: string }) {
             className={cn('min-w-0 gap-0 py-0', className)}
             aria-hidden="true"
         >
-            <CardContent className="flex flex-col gap-3 p-5">
-                <div className="flex items-start justify-between gap-3">
-                    <Skeleton className="mt-1 h-4 w-28" />
-                    <Skeleton className="size-9 rounded-lg" />
+            <CardContent className="flex flex-col gap-2 p-4">
+                <div className="flex items-center justify-between gap-3">
+                    <Skeleton className="h-4 w-28" />
+                    <Skeleton className="size-7 rounded-lg" />
                 </div>
-                <Skeleton className="h-9 w-20" />
+                <Skeleton className="h-7 w-20" />
                 <Skeleton className="h-3 w-36" />
             </CardContent>
         </Card>
