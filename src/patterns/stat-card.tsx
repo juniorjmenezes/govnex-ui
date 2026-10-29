@@ -54,6 +54,12 @@ export interface StatCardProps {
     /** Cor CSS do mini-gráfico. Padrão: destaque (`--chart-1`). */
     sparklineColor?: string;
     className?: string;
+    /**
+     * `stacked` (padrão): rótulo em cima, ícone à direita, valor abaixo.
+     * `icon-leading`: ícone num selo colorido à esquerda, rótulo e valor
+     * empilhados à direita — em avaliação, usado só pelo GAB por ora.
+     */
+    layout?: 'stacked' | 'icon-leading';
 }
 
 const percentFormatter = new Intl.NumberFormat('pt-BR', {
@@ -127,51 +133,86 @@ export function StatCard({
     sparkline,
     sparklineColor,
     className,
+    layout = 'stacked',
 }: StatCardProps) {
     const hasSparkline = sparkline !== undefined && sparkline.length > 1;
+    const valueNode = (
+        <p
+            className={cn(
+                'min-w-0 text-2xl font-bold tracking-tight text-foreground tabular-nums',
+                valueClassName,
+            )}
+        >
+            {value}
+        </p>
+    );
 
     return (
         <Card className={cn('min-w-0 gap-0 py-0', className)}>
             <CardContent className="flex h-full flex-col gap-2 p-4">
-                <div className="flex items-center justify-between gap-3">
-                    <p
-                        data-slot="stat-card-title"
-                        className="min-w-0 truncate font-sans text-sm font-medium text-muted-foreground"
-                        title={title}
-                    >
-                        {title}
-                    </p>
-                    {Icon && (
-                        <Icon
-                            className="size-6 shrink-0 text-primary dark:text-[color-mix(in_oklch,var(--primary),white_35%)]"
-                            aria-hidden="true"
-                        />
-                    )}
-                </div>
-                {/* Valor e mini-gráfico na mesma linha; a variação vem logo
-                    abaixo em largura cheia, para não quebrar em cartões
-                    estreitos (5 por linha). */}
-                <div className="flex flex-col gap-1">
-                    <div className="flex items-end justify-between gap-3">
-                        <p
-                            className={cn(
-                                'min-w-0 text-2xl font-bold tracking-tight text-foreground tabular-nums',
-                                valueClassName,
-                            )}
-                        >
-                            {value}
-                        </p>
+                {layout === 'icon-leading' ? (
+                    <div className="flex items-center gap-3">
+                        {Icon && (
+                            <span
+                                className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary dark:bg-primary/15 dark:text-[color-mix(in_oklch,var(--primary),white_35%)]"
+                                aria-hidden="true"
+                            >
+                                <Icon className="size-6" />
+                            </span>
+                        )}
+                        <div className="flex min-w-0 flex-col gap-0.5">
+                            <p
+                                data-slot="stat-card-title"
+                                className="min-w-0 truncate font-sans text-sm font-medium text-muted-foreground"
+                                title={title}
+                            >
+                                {title}
+                            </p>
+                            {valueNode}
+                        </div>
                         {hasSparkline && (
                             <Sparkline
                                 data={sparkline}
                                 color={sparklineColor}
                                 height={32}
-                                className="mb-0.5 w-20 max-w-[50%] shrink"
+                                className="ml-auto w-20 max-w-[30%] shrink"
                             />
                         )}
                     </div>
-                    {trend && <TrendBadge trend={trend} />}
-                </div>
+                ) : (
+                    <>
+                        <div className="flex items-center justify-between gap-3">
+                            <p
+                                data-slot="stat-card-title"
+                                className="min-w-0 truncate font-sans text-sm font-medium text-muted-foreground"
+                                title={title}
+                            >
+                                {title}
+                            </p>
+                            {Icon && (
+                                <Icon
+                                    className="size-6 shrink-0 text-primary dark:text-[color-mix(in_oklch,var(--primary),white_35%)]"
+                                    aria-hidden="true"
+                                />
+                            )}
+                        </div>
+                        {/* Valor e mini-gráfico na mesma linha; a variação
+                            vem logo abaixo em largura cheia, para não
+                            quebrar em cartões estreitos (5 por linha). */}
+                        <div className="flex items-end justify-between gap-3">
+                            {valueNode}
+                            {hasSparkline && (
+                                <Sparkline
+                                    data={sparkline}
+                                    color={sparklineColor}
+                                    height={32}
+                                    className="mb-0.5 w-20 max-w-[50%] shrink"
+                                />
+                            )}
+                        </div>
+                    </>
+                )}
+                {trend && <TrendBadge trend={trend} />}
                 {progress ? (
                     <div>
                         <div className="flex items-center justify-between gap-2 text-xs text-muted-foreground">
