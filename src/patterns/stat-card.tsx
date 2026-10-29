@@ -142,12 +142,10 @@ export function StatCard({
                         {title}
                     </p>
                     {Icon && (
-                        <span
-                            className="flex size-7 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary dark:bg-primary/15 dark:text-[color-mix(in_oklch,var(--primary),white_35%)]"
+                        <Icon
+                            className="size-6 shrink-0 text-primary dark:text-[color-mix(in_oklch,var(--primary),white_35%)]"
                             aria-hidden="true"
-                        >
-                            <Icon className="size-4" />
-                        </span>
+                        />
                     )}
                 </div>
                 {/* Valor e mini-gráfico na mesma linha; a variação vem logo
@@ -207,7 +205,7 @@ export function StatCardSkeleton({ className }: { className?: string }) {
             <CardContent className="flex flex-col gap-2 p-4">
                 <div className="flex items-center justify-between gap-3">
                     <Skeleton className="h-4 w-28" />
-                    <Skeleton className="size-7 rounded-lg" />
+                    <Skeleton className="size-6 rounded" />
                 </div>
                 <Skeleton className="h-7 w-20" />
                 <Skeleton className="h-3 w-36" />
