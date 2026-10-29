@@ -160,7 +160,13 @@ export function StatCard({
                                 <Icon className="size-6" />
                             </span>
                         )}
-                        <div className="flex min-w-0 flex-col gap-0.5">
+                        {Icon && !hasSparkline && (
+                            <div
+                                className="h-10 w-px shrink-0 bg-border"
+                                aria-hidden="true"
+                            />
+                        )}
+                        <div className="flex min-w-0 flex-1 flex-col justify-center gap-0.5">
                             <p
                                 data-slot="stat-card-title"
                                 className="min-w-0 truncate font-sans text-sm font-medium text-muted-foreground"
