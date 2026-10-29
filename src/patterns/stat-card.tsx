@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 
-import { Card, CardContent, CardFooter } from '../components/card';
+import { Card, CardContent } from '../components/card';
 import { Progress } from '../components/progress';
 import { Skeleton } from '../components/skeleton';
 import { Sparkline } from '../components/sparkline';
@@ -160,12 +160,6 @@ export function StatCard({
                                 <Icon className="size-6" />
                             </span>
                         )}
-                        {Icon && !hasSparkline && (
-                            <div
-                                className="h-10 w-px shrink-0 bg-border"
-                                aria-hidden="true"
-                            />
-                        )}
                         <div className="flex min-w-0 flex-1 flex-col justify-center gap-0.5">
                             <p
                                 data-slot="stat-card-title"
@@ -220,7 +214,7 @@ export function StatCard({
                 )}
             </CardContent>
             {(trend || progress || description) && (
-                <CardFooter className="flex-col items-stretch gap-2 border-t px-4 pt-3 pb-4">
+                <div className="flex flex-col gap-2 border-t border-border px-4 pt-2 pb-4">
                     {trend && <TrendBadge trend={trend} />}
                     {progress ? (
                         <div>
@@ -243,7 +237,7 @@ export function StatCard({
                             {description}
                         </p>
                     ) : null}
-                </CardFooter>
+                </div>
             )}
         </Card>
     );
@@ -263,9 +257,9 @@ export function StatCardSkeleton({ className }: { className?: string }) {
                 </div>
                 <Skeleton className="h-7 w-20" />
             </CardContent>
-            <CardFooter className="border-t px-4 pt-3 pb-4">
+            <div className="border-t border-border px-4 pt-2 pb-4">
                 <Skeleton className="h-3 w-36" />
-            </CardFooter>
+            </div>
         </Card>
     );
 }
