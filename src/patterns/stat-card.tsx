@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 
-import { Card, CardContent } from '../components/card';
+import { Card, CardContent, CardFooter } from '../components/card';
 import { Progress } from '../components/progress';
 import { Skeleton } from '../components/skeleton';
 import { Sparkline } from '../components/sparkline';
@@ -218,26 +218,33 @@ export function StatCard({
                         </div>
                     </>
                 )}
-                {trend && <TrendBadge trend={trend} />}
-                {progress ? (
-                    <div>
-                        <div className="flex items-center justify-between gap-2 text-xs text-muted-foreground">
-                            <span>{progress.label}</span>
-                            <span className="font-medium text-foreground tabular-nums">
-                                {progress.value}
-                            </span>
-                        </div>
-                        <Progress
-                            value={Math.min(100, Math.max(0, progress.percent))}
-                            className="mt-2"
-                        />
-                    </div>
-                ) : description ? (
-                    <p className="text-xs leading-snug text-muted-foreground">
-                        {description}
-                    </p>
-                ) : null}
             </CardContent>
+            {(trend || progress || description) && (
+                <CardFooter className="flex-col items-stretch gap-2 border-t px-4 pt-3 pb-4">
+                    {trend && <TrendBadge trend={trend} />}
+                    {progress ? (
+                        <div>
+                            <div className="flex items-center justify-between gap-2 text-xs text-muted-foreground">
+                                <span>{progress.label}</span>
+                                <span className="font-medium text-foreground tabular-nums">
+                                    {progress.value}
+                                </span>
+                            </div>
+                            <Progress
+                                value={Math.min(
+                                    100,
+                                    Math.max(0, progress.percent),
+                                )}
+                                className="mt-2"
+                            />
+                        </div>
+                    ) : description ? (
+                        <p className="text-xs leading-snug text-muted-foreground">
+                            {description}
+                        </p>
+                    ) : null}
+                </CardFooter>
+            )}
         </Card>
     );
 }
@@ -255,8 +262,10 @@ export function StatCardSkeleton({ className }: { className?: string }) {
                     <Skeleton className="size-6 rounded" />
                 </div>
                 <Skeleton className="h-7 w-20" />
-                <Skeleton className="h-3 w-36" />
             </CardContent>
+            <CardFooter className="border-t px-4 pt-3 pb-4">
+                <Skeleton className="h-3 w-36" />
+            </CardFooter>
         </Card>
     );
 }
