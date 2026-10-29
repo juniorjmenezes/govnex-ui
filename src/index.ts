@@ -303,6 +303,8 @@ export { DateTimeFieldPair } from './patterns/date-time-field-pair';
 export { DropZone } from './patterns/drop-zone';
 export { FieldError } from './patterns/field-error';
 export { FieldLabel } from './patterns/field-label';
+export { FormField } from './patterns/form-field';
+export type { FormFieldProps } from './patterns/form-field';
 export { TimePicker } from './patterns/time-picker';
 export { PageContainer } from './patterns/page-container';
 export { PageHeader } from './patterns/page-header';
