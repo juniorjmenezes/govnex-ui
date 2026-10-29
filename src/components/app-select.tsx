@@ -33,6 +33,8 @@ export type AppSelectProps = {
     clearable?: boolean;
     className?: string;
     startAdornment?: ReactNode;
+    /** Conteúdo extra no fim do campo, depois do limpar/abrir — ex.: `FieldHelp`. */
+    endAdornment?: ReactNode;
     'aria-label'?: string;
     'aria-invalid'?: boolean;
     'aria-describedby'?: string;
@@ -55,6 +57,7 @@ function AppSelect({
     clearable = true,
     className,
     startAdornment,
+    endAdornment,
     ...accessibility
 }: AppSelectProps) {
     const items = emptyLabel
@@ -93,6 +96,11 @@ function AppSelect({
                     {startAdornment && (
                         <InputGroupAddon align="inline-start">
                             {startAdornment}
+                        </InputGroupAddon>
+                    )}
+                    {endAdornment && (
+                        <InputGroupAddon align="inline-end">
+                            {endAdornment}
                         </InputGroupAddon>
                     )}
                 </ComboboxInput>

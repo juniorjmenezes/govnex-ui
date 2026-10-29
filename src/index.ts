@@ -139,6 +139,7 @@ export {
     FieldContent,
     FieldTitle,
 } from './components/field';
+export { FieldHelp } from './components/field-help';
 export { Input } from './components/input';
 export {
     InputGroup,
