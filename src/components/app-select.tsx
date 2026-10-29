@@ -90,17 +90,15 @@ function AppSelect({
                     placeholder={placeholder}
                     disabled={disabled}
                     showClear={hasClearableSelection}
+                    endExtra={
+                        !hasClearableSelection ? endAdornment : undefined
+                    }
                     className="w-full"
                     {...accessibility}
                 >
                     {startAdornment && (
                         <InputGroupAddon align="inline-start">
                             {startAdornment}
-                        </InputGroupAddon>
-                    )}
-                    {endAdornment && (
-                        <InputGroupAddon align="inline-end">
-                            {endAdornment}
                         </InputGroupAddon>
                     )}
                 </ComboboxInput>

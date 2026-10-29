@@ -57,10 +57,13 @@ function ComboboxInput({
     disabled = false,
     showTrigger = true,
     showClear = false,
+    endExtra,
     ...props
 }: ComboboxPrimitive.Input.Props & {
     showTrigger?: boolean;
     showClear?: boolean;
+    /** Conteúdo extra no mesmo addon do gatilho/limpar, ex.: um botão de ajuda. */
+    endExtra?: React.ReactNode;
 }) {
     return (
         <ComboboxPrimitive.InputGroup
@@ -96,6 +99,7 @@ function ComboboxInput({
                 {showClear && (
                     <ComboboxClear aria-label="Limpar seleção" disabled={disabled} />
                 )}
+                {endExtra}
             </InputGroupAddon>
             {children}
         </ComboboxPrimitive.InputGroup>
