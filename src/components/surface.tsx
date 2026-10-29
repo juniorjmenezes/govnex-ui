@@ -120,7 +120,7 @@ export function SurfaceDescription({
     );
 }
 
-function SurfaceHelp({ children }: { children: ReactNode }) {
+export function SurfaceHelp({ children }: { children: ReactNode }) {
     const [open, setOpen] = useState(false);
     const openedByHover = useRef(false);
     const closeTimer = useRef<number | undefined>(undefined);

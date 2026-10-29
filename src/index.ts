@@ -234,6 +234,7 @@ export {
     Surface,
     SurfaceDescription,
     SurfaceHeader,
+    SurfaceHelp,
     SurfaceTitle,
     surfaceClasses,
     surfaceInteractiveClasses,
