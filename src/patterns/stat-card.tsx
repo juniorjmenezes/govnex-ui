@@ -61,9 +61,8 @@ export interface StatCardProps {
      */
     layout?: 'stacked' | 'icon-leading';
     /**
-     * `inline` (padrão): mini-gráfico ao lado do valor. `footer`: desce
-     * para o rodapé, abaixo da variação/descrição — em avaliação, usado
-     * só pelo GAB por ora.
+     * `footer` (padrão): mini-gráfico desce para o rodapé, abaixo da
+     * variação/descrição. `inline`: fica ao lado do valor.
      */
     chartPlacement?: 'inline' | 'footer';
 }
@@ -140,7 +139,7 @@ export function StatCard({
     sparklineColor,
     className,
     layout = 'stacked',
-    chartPlacement = 'inline',
+    chartPlacement = 'footer',
 }: StatCardProps) {
     const hasSparkline = sparkline !== undefined && sparkline.length > 1;
     const showInlineChart = hasSparkline && chartPlacement === 'inline';
@@ -148,7 +147,7 @@ export function StatCard({
     const valueNode = (
         <p
             className={cn(
-                'min-w-0 text-2xl font-bold tracking-tight text-foreground tabular-nums',
+                'min-w-0 text-3xl font-bold tracking-tight text-foreground tabular-nums',
                 valueClassName,
             )}
         >
