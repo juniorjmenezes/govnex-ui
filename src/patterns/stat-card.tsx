@@ -60,6 +60,12 @@ export interface StatCardProps {
      * empilhados à direita — em avaliação, usado só pelo GAB por ora.
      */
     layout?: 'stacked' | 'icon-leading';
+    /**
+     * `inline` (padrão): mini-gráfico ao lado do valor. `footer`: desce
+     * para o rodapé, abaixo da variação/descrição — em avaliação, usado
+     * só pelo GAB por ora.
+     */
+    chartPlacement?: 'inline' | 'footer';
 }
 
 const percentFormatter = new Intl.NumberFormat('pt-BR', {
@@ -134,8 +140,11 @@ export function StatCard({
     sparklineColor,
     className,
     layout = 'stacked',
+    chartPlacement = 'inline',
 }: StatCardProps) {
     const hasSparkline = sparkline !== undefined && sparkline.length > 1;
+    const showInlineChart = hasSparkline && chartPlacement === 'inline';
+    const showFooterChart = hasSparkline && chartPlacement === 'footer';
     const valueNode = (
         <p
             className={cn(
@@ -170,7 +179,7 @@ export function StatCard({
                             </p>
                             {valueNode}
                         </div>
-                        {hasSparkline && (
+                        {showInlineChart && (
                             <Sparkline
                                 data={sparkline}
                                 color={sparklineColor}
@@ -201,7 +210,7 @@ export function StatCard({
                             quebrar em cartões estreitos (5 por linha). */}
                         <div className="flex items-end justify-between gap-3">
                             {valueNode}
-                            {hasSparkline && (
+                            {showInlineChart && (
                                 <Sparkline
                                     data={sparkline}
                                     color={sparklineColor}
@@ -213,7 +222,7 @@ export function StatCard({
                     </>
                 )}
             </CardContent>
-            {(trend || progress || description) && (
+            {(trend || progress || description || showFooterChart) && (
                 <div className="space-y-1 border-t px-4 py-2 text-xs text-muted-foreground">
                     {trend && <TrendBadge trend={trend} />}
                     {progress ? (
@@ -235,6 +244,14 @@ export function StatCard({
                     ) : description ? (
                         <p className="leading-snug">{description}</p>
                     ) : null}
+                    {showFooterChart && (
+                        <Sparkline
+                            data={sparkline}
+                            color={sparklineColor}
+                            height={32}
+                            className="w-full"
+                        />
+                    )}
                 </div>
             )}
         </Card>
