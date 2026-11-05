@@ -38,7 +38,7 @@ depois de qualquer mudanca de cor em `styles.css`.
   `text-base`; `interactive` eleva o cartao no hover.
 - `StatCard`: rotulo, valor, `trend` (variacao % vs periodo anterior, cor
   semantica; `positiveIsGood={false}` inverte) e `sparkline` (serie curta).
-  Rotulo e textos usam Outfit (`--font-sans`); o valor numerico usa
+  Rotulo e textos usam Geist (`--font-sans`); o valor numerico usa
   JetBrains Mono (`--font-mono`), para alinhamento tabular consistente.
   `StatCardSkeleton` para carregamento.
 - `EmptyState` (`size="compact"` dentro de cartoes) e `Sparkline`.
@@ -57,7 +57,7 @@ token, componente ou padrao e feita **somente aqui**.
 
 ## Tipografia
 
-Outfit e a fonte de interface (`--font-sans`), DM Serif Text compoe os
+Geist e a fonte de interface (`--font-sans`), DM Serif Text compoe os
 titulos (`--font-heading`) e JetBrains Mono fica reservada para codigo e
 dados quantitativos — StatCard e colunas numericas de tabela (`--font-mono`).
 

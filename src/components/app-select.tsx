@@ -29,7 +29,7 @@ export type AppSelectProps = {
     id?: string;
     name?: string;
     disabled?: boolean;
-    /** Mostra o botão de limpar quando há seleção (padrão: sim). */
+    /** Mostra o botão de limpar quando há seleção (padrão: não — campo opcional usa `emptyLabel`). */
     clearable?: boolean;
     className?: string;
     startAdornment?: ReactNode;
@@ -54,7 +54,7 @@ function AppSelect({
     id,
     name,
     disabled,
-    clearable = true,
+    clearable = false,
     className,
     startAdornment,
     endAdornment,
