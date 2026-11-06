@@ -51,7 +51,7 @@ nao pertencem a este pacote.
 Este repositorio e a **fonte canonica** do `@govnex/ui`. Toda mudanca de
 token, componente ou padrao e feita **somente aqui**.
 
-- **GAB, API, GHO e HUB** instalam todos via dependencia Git (abaixo) e so
+- **GEP, API, GHO e HUB** instalam todos via dependencia Git (abaixo) e so
   recebem mudancas quando atualizam a referencia no lockfile
   (`npm install @govnex/ui@github:juniorjmenezes/govnex-ui`).
 
@@ -108,13 +108,13 @@ sem estilo nenhum: bordas, cores e radius somem, sobra so texto puro.
 ```
 
 (ajuste o caminho relativo conforme a posicao do `app.css` no projeto). Vale
-para os quatro consumidores (GAB, API, GHO, HUB) — todos instalam via
+para os quatro consumidores (GEP, API, GHO, HUB) — todos instalam via
 `node_modules`.
 
 Enquanto o pacote estiver em `0.x`, novas extracoes devem ser validadas no
-GOVNEX GAB e em pelo menos outro produto GOVNEX antes de estabilizar a API.
+GOVNEX GEP e em pelo menos outro produto GOVNEX antes de estabilizar a API.
 
 ## Estado do redesenho visual
 
 O redesenho "SaaS moderno e suave" (tokens, componentes e padrões deste pacote) está **em andamento**; o que já foi feito e o que falta
-estão em `docs/REDESENHO_UI.md` do repositório `govnex-gab`. Antes de adotar esta versão em outro produto, leia a seção "O que falta para concluir".
+estão em `docs/REDESENHO_UI.md` do repositório `govnex-gep`. Antes de adotar esta versão em outro produto, leia a seção "O que falta para concluir".

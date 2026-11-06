@@ -1,6 +1,6 @@
 # Padrão de plataforma GOVNEX
 
-Documento de referência para **todas** as aplicações do ecossistema (GAB, GHO, GRI, GPC, API, Hub). Fica neste repositório só porque ele é o único ponto que todos os produtos já instalam; o pacote `@govnex/ui` continua sendo exclusivamente visual (nenhuma regra deste documento vira código aqui).
+Documento de referência para **todas** as aplicações do ecossistema (GEP, GHO, GRI, GPC, API, Hub). Fica neste repositório só porque ele é o único ponto que todos os produtos já instalam; o pacote `@govnex/ui` continua sendo exclusivamente visual (nenhuma regra deste documento vira código aqui).
 
 Onde um `AGENTS.md`/`CLAUDE.md` de produto divergir deste documento, a divergência precisa ser registrada como decisão explícita no produto.
 
@@ -13,7 +13,7 @@ As aplicações devem ser **parecidas por construção**: mesma stack, mesma arq
 - O **Hub é a fonte da verdade de identidade**: quem a pessoa é, a quais entidades/unidades está vinculada e se está ativa ou desligada.
 - O Hub **não decide o que a pessoa faz dentro de cada produto** e **não guarda papéis nos vínculos**: vínculo é só "esta pessoa pertence a esta entidade/unidade e pode entrar neste sistema". Durante a migração, o campo `papel` ainda pode existir no contrato, mas é ignorado pelos produtos.
 - O painel do próprio Hub é gerido pelo Hub. O **root** faz tudo, sem ressalvas; não há política de concessão por papel entre administradores e operadores.
-- Cada aplicação **gere seus próprios papéis** (cargo no GAB, perfil no GHO etc.), atribuídos localmente.
+- Cada aplicação **gere seus próprios papéis** (cargo no GEP, perfil no GHO etc.), atribuídos localmente.
 - Login por **OIDC (Authorization Code + PKCE S256)**; `sub` do Hub vira `users.hub_user_id` (único). E-mail é atributo, não chave.
 - A aplicação mantém **espelho local** de pessoa e vínculo (nunca exclui fisicamente; desativa). Sincroniza no login (retrato completo) e por **webhook assinado** (retrato do evento citado).
 - Hub fora do ar bloqueia login novo, mas não derruba sessão já aberta.
@@ -34,7 +34,7 @@ Regras:
 
 ### 3.1 Partida da administração de acessos (bootstrap)
 
-Como o Hub não concede papéis, é preciso uma forma de dar o **primeiro** papel de administração de um contexto novo. O padrão é um **comando de operador** do próprio produto (ex.: `gho:gestor-acesso-conceder`, `gab:cargo-conceder`):
+Como o Hub não concede papéis, é preciso uma forma de dar o **primeiro** papel de administração de um contexto novo. O padrão é um **comando de operador** do próprio produto (ex.: `gho:gestor-acesso-conceder`, `gep:cargo-conceder`):
 
 - só quem opera o servidor executa; não existe tela nem endpoint para isso;
 - exige pessoa (`hub_user_id`) e contexto (entidade/unidade do Hub) com vínculo ativo, e `--motivo` obrigatório;
@@ -105,7 +105,7 @@ Não adicionar Bootstrap, jQuery nem outro design system.
 
 ## 10. Estado de aderência (levantamento de 04/11/2026)
 
-| Item | API | GAB | Hub | GHO |
+| Item | API | GEP | Hub | GHO |
 |---|---|---|---|---|
 | Pest 4 | ✘ (PHPUnit 12) | ✔ | ✘ (PHPUnit 11) | ✔ |
 | Larastan | ✘ | ✔ | ✔ | ✔ |

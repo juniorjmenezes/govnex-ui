@@ -191,7 +191,7 @@ function ratio(fg, bg) {
 
 /**
  * Texto legível sobre o destaque: preto ou branco, o que der mais contraste
- * (mesma regra do `OfficeTheme` do GAB).
+ * (mesma regra do `OfficeTheme` do GEP).
  */
 function readableOn(color) {
     const dark = parse('#111111', {});
