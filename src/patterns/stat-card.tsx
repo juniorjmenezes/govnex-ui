@@ -57,7 +57,7 @@ export interface StatCardProps {
     /**
      * `stacked` (padrão): rótulo em cima, ícone à direita, valor abaixo.
      * `icon-leading`: ícone num selo colorido à esquerda, rótulo e valor
-     * empilhados à direita — em avaliação, usado só pelo GAB por ora.
+     * empilhados à direita — em avaliação, usado só pelo GEP por ora.
      */
     layout?: 'stacked' | 'icon-leading';
     /**

@@ -2,11 +2,11 @@ import { defineConfig } from 'tsup';
 
 /**
  * Gera `dist/` compilado (JS + `.d.ts`) para consumo fora do workspace do
- * GAB — outro repositório instalando `@govnex/ui` como dependência de
+ * GEP — outro repositório instalando `@govnex/ui` como dependência de
  * verdade não consegue transpilar TS/JSX direto de `node_modules` como o
- * Vite do GAB faz hoje (ele trata o pacote como parte do próprio workspace,
+ * Vite do GEP faz hoje (ele trata o pacote como parte do próprio workspace,
  * via symlink). Isso é puramente aditivo: os `exports` do `package.json`
- * continuam apontando para `./src`, então o GAB não muda de comportamento.
+ * continuam apontando para `./src`, então o GEP não muda de comportamento.
  */
 export default defineConfig({
     entry: {
@@ -46,7 +46,7 @@ export default defineConfig({
         // (≈50 KB juntos), embutidos em base64 direto no JS. O loader
         // `file` (caminho relativo copiado para `dist/assets`) só funciona
         // quando quem consome reprocessa o import pelo próprio bundler —
-        // é o caso do GAB (código-fonte direto), mas não de quem instala
+        // é o caso do GEP (código-fonte direto), mas não de quem instala
         // `@govnex/ui` como dependência de verdade (Hub, API, GHO): aí o
         // JS já vem compilado, o caminho relativo vira texto literal, e o
         // navegador tenta buscá-lo relativo à própria página — imagem
